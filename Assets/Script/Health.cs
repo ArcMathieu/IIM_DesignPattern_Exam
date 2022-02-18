@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Health : MonoBehaviour, IHealth
+public class Health : MonoBehaviour, IHealth, ITouchable
 {
     // Champs
     [SerializeField] int _startHealth;
@@ -20,7 +20,10 @@ public class Health : MonoBehaviour, IHealth
     // Events
     public event UnityAction OnSpawn;
     public event UnityAction<int> OnDamage;
+    public event UnityAction OnShake;
     public event UnityAction OnDeath { add => _onDeath.AddListener(value); remove => _onDeath.RemoveListener(value); }
+
+    bool _isInvicible;
 
     // Methods
     void Awake() => Init();
@@ -30,21 +33,33 @@ public class Health : MonoBehaviour, IHealth
         CurrentHealth = _startHealth;
         OnSpawn?.Invoke();
     }
-
     public void TakeDamage(int amount)
     {
         if (amount < 0) throw new ArgumentException($"Argument amount {nameof(amount)} is negativ");
 
-        var tmp = CurrentHealth;
-        CurrentHealth = Mathf.Max(0, CurrentHealth - amount);
-        var delta = CurrentHealth - tmp;
-        OnDamage?.Invoke(delta);
+        if (!_isInvicible) {
+            var tmp = CurrentHealth;
+            CurrentHealth = Mathf.Max(0, CurrentHealth - amount);
+            var delta = CurrentHealth - tmp;
+            OnDamage?.Invoke(delta);
+            OnShake?.Invoke();
 
-        if(CurrentHealth <= 0)
-        {
-            _onDeath?.Invoke();
+            if(CurrentHealth <= 0)
+            {
+                _onDeath?.Invoke();
+            }
         }
-
+    }
+    public void Heal(int amount)
+    {
+        CurrentHealth += amount ;
+        CurrentHealth = Mathf.Clamp(CurrentHealth, 0, MaxHealth);
+        OnDamage?.Invoke(CurrentHealth);
+    }
+    
+    public void IsInvincible(bool invicible)
+    {
+        _isInvicible = invicible;
     }
 
     [Button("test")]
@@ -86,8 +101,8 @@ public class Health : MonoBehaviour, IHealth
         yield break;
     }
 
-
-
-
-
+    public void Touch(int power)
+    {
+        TakeDamage(power);
+    }
 }

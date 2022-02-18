@@ -17,7 +17,7 @@ public class AIBrain : MonoBehaviour
         {
             yield return new WaitForSeconds(Random.Range(1f, 3f));
 
-            if(Vector3.Distance(_playerTarget.transform.position, transform.position) < _detectionRadius) 
+            if (Vector3.Distance(_playerTarget.transform.position, transform.position) < _detectionRadius)
                 _fire.FireBullet(2);
         }
     }

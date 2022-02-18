@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7899245307423150807}
   - component: {fileID: 490549678581578542}
+  - component: {fileID: 1589488010098681153}
   m_Layer: 0
   m_Name: Brain
   m_TagString: Untagged
@@ -46,6 +47,20 @@ MonoBehaviour:
   _fire: {fileID: 4645590585023127803}
   _playerTarget: {fileID: 0}
   _detectionRadius: 7
+  _drawGizmo: 0
+--- !u!114 &1589488010098681153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417055631195523752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcaf8185ac3aae74b9a310cca0617e2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 2
 --- !u!1 &1855186171643597931
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,6 +341,7 @@ GameObject:
   - component: {fileID: 4645590585023127803}
   - component: {fileID: 9182086342212961279}
   - component: {fileID: 1312329987884567566}
+  - component: {fileID: 1490850499502552290}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -363,6 +379,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: {fileID: 1312329987884567566}
+  GoblinNoises:
+  - {fileID: 8300000, guid: 51597b25894fd3c4c887e54b2c775fe6, type: 3}
+  - {fileID: 8300000, guid: 3d95153ba1e60b54fab399f3dfe39d4f, type: 3}
+  _sdRef: {fileID: 11400000, guid: cbb8c25b32a9d8846ae14de6543de7b2, type: 2}
 --- !u!114 &4645590585023127803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -432,6 +452,27 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!50 &1490850499502552290
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3736426140379942410}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1000
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1 &6019756107402616924
 GameObject:
   m_ObjectHideFlags: 0

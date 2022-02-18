@@ -43,6 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50c3812529d0d54498b4434e5c4c8502, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerRef: {fileID: 11400000, guid: 7d3f6df302821bc4291c74c1e016a367, type: 2}
+  _sdRef: {fileID: 11400000, guid: cbb8c25b32a9d8846ae14de6543de7b2, type: 2}
+  _impactSd: {fileID: 8300000, guid: 1fc509f4e585697498e42969b6f3ab1d, type: 3}
 --- !u!1 &2710648424249135073
 GameObject:
   m_ObjectHideFlags: 0
@@ -120,9 +123,13 @@ MonoBehaviour:
   _mainCamera: {fileID: 0}
   _movement: {fileID: 4880755393553903839}
   _fire: {fileID: 4282943184299706631}
+  _shield: {fileID: 0}
   _pointerPosition: {fileID: -783169567023109517, guid: edb876c493db3cc41bcfd505340de7ef, type: 3}
   _moveJoystick: {fileID: 1202087846194337127, guid: edb876c493db3cc41bcfd505340de7ef, type: 3}
   _fireButton: {fileID: 1288914843486402132, guid: edb876c493db3cc41bcfd505340de7ef, type: 3}
+  _shieldButton: {fileID: 0}
+  _sdRef: {fileID: 0}
+  ArrowNoise: {fileID: 0}
 --- !u!1 &2718515491814373226
 GameObject:
   m_ObjectHideFlags: 0
@@ -793,6 +800,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: {fileID: 1657962468365373699}
+  _picker: {fileID: 0}
+  _shakeRef: {fileID: 0}
 --- !u!114 &7570379441199668059
 MonoBehaviour:
   m_ObjectHideFlags: 0
